@@ -3,38 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clinica Nutricional</title>
+    <title>Clinica Nutricional - NutriVida</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-</head>
 
+</head>    
 <body>
     <header>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">NutriVida</a>
+    <nav class="navbar navbar-expand-lg navCustom" data-bs-theme="dark">
+  <div class="container-fluid" >
+    <a class="navbar-brand" href="index.html">NutriVida</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <ul class="nav justify-content-center">
+      
+        <ul class="navbar-nav mx-auto">
     <li class="nav-item">
         <a class="nav-link active" aria-current="page" href="#">Nosotros</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link active" href="#">Servicios</a>
+        <a class="nav-link active" href="profesionales.html">Profesionales</a>
     </li>
     <li class="nav-item">
         <a class="nav-link active" href="#">Reserva hora</a>
     </li>
     </ul>
+    <li class="InicioSesion">
+        <a class="nav-link active" href="#">Iniciar sesion</a>
+    </li>
       </div>
-    </div>
   </div>
 </nav>
     </header>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+    <main>
+    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+  <div class="carousel-inner">
+
+    <div class="carousel-item active">
+      <img src="images/diet-concept-with-female-scientist-healthy-food.jpg" class="d-block w-100" alt="...">
+    <div class="carousel-caption d-none d-md-block">
+        <div class="bg-white text-dark p-4 rounded-4 shadow-lg mx-auto" style="max-width: 500px; --bs-bg-opacity: .9;">
+          <h2 class="fw-bold text-success">Clínica Nutricional</h2>
+          <p class="fw-bold text-uppercase text-secondary mb-2">Tu bienestar comienza hoy</p>
+          <p class="mb-3">Nutrición para recuperar tu salud, mejorar tu bienestar, bajar de peso y <strong>sentirse mejor.</strong></p>
+          <a href="#" class="btn btn-success rounded-pill px-4">Reservar Hora</a>
+        </div>
+      </div>
+    
+    </div>
+
+    <div class="carousel-item">
+      <img src="images/nutricionista.webp" class="d-block w-100" alt="...">
+    <div class="carousel-caption d-none d-md-block">
+        <div class="bg-white text-dark p-4 rounded-4 shadow-lg mx-auto" style="max-width: 500px; --bs-bg-opacity: .9;">
+          <h2 class="fw-bold text-success">Clínica Nutricional</h2>
+          <p class="fw-bold text-uppercase text-secondary mb-2">Tu bienestar comienza hoy</p>
+          <p class="mb-3">Nutrición para recuperar tu salud, mejorar tu bienestar, bajar de peso y <strong>sentirse mejor.</strong></p>
+          <a href="#" class="btn btn-success rounded-pill px-4">Reservar Hora</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Anterior</span>
+  </button>
+  
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Siguiente</span>
+  </button>
+</div>
+    
+    <div class="container my-4" style="max-width: 1300px;">
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="col">
+    <div class="card carta-corta text-center">
+      <img src="images/icono1.jpg" class="card-img-top mx-auto mt-2 img-icono" alt="..." style="width: 60px; height: 60px; border-radius: 20px;">
+      <div class="card-body">
+        <h5 class="card-title">Plan Especializados</h5>
+        <p class="card-text">Para pacientes que requieren atención fuera de su control habitual.</p>
+      </div>
+      <div class="card-footer" style="background-color: rgb(75, 69, 69);">
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card carta-corta text-center">
+      <img src="images/icono3.webp" class="card-img-top mx-auto mt-2 img-icono" alt="..." style="width: 60px; height: 60px; border-radius: 20px;">
+      <div class="card-body">
+        <h5 class="card-title">Teleconsulta Nutricional</h5>
+        <p class="card-text">Consulta de seguimiento vía videollamada. Requiere contar con consulta presencial previa.</p>
+      </div>
+      <div class="card-footer" style="background-color: rgb(75, 69, 69);">
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card carta-corta text-center">
+      <img src="images/icono2.jpg" class="card-img-top mx-auto mt-2 img-icono" alt="..." style="width: 60px; height: 60px; border-radius: 20px;">
+      <div class="card-body">
+        <h5 class="card-title">Talleres grupales</h5>
+        <p class="card-text">Inicia con un máx de 10 personas. Conceptos básicos de alimentación equilibrada y lectura de etiquetas.</p>
+      </div>
+      <div class="card-footer" style="background-color: rgb(75, 69, 69);">
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<div class="container my-5">
+  <h3 class="text-center mb-4">Clinica nutricional - Ubicacion</h3>
+  <div class="ratio ratio-16x9 shadow rounded overflow-hidden">
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3326.4842975702304!2d-70.56321642345249!3d-33.514792000811696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662d1a7b50737a3%3A0xf6b03b7d1e53c8dd!2sProvidencia%205431%2C%20La%20Florida%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses!2scl!4v1788224883382!5m2!1ses!2scl" 
+      style="border:0;" 
+      allowfullscreen="" 
+      loading="lazy" 
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</div>
+</main>
+    
+  <footer>
+    <p class="p">Clinica nutricional - NutriVida</p>
+  </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
 </body>
 </html>

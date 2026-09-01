@@ -1,0 +1,55 @@
+.navCustom{
+    background-color: rgb(49, 78, 34);
+    height: 60px;
+    box-shadow: 2px 2px 8px rgba(36, 19, 0, 0.2);
+}
+
+.InicioSesion{
+    text-align: right;
+    color: white;
+}
+
+body{
+    background-image: url(images/fondo3.jpg);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.section{
+    background-color: rgb(49, 78, 34);
+    box-shadow: 2px 2px 8px rgba(36, 19, 0, 0.2);
+    
+}
+
+h1{
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.p{
+    text-align: center;
+    color: white;
+}
+
+img{
+    width: 100%;
+    height: 450px; 
+    object-fit: cover; 
+    display: block;
+    margin: 0; 
+    box-shadow: 2px 2px 8px rgba(36, 19, 0, 0.2);
+    margin-top: 0;
+}
+
+main {
+    flex: 1;
+}
+
+footer {
+    background-color: rgb(49, 78, 34);
+    color: white; 
+    text-align: center;
+    padding: 1px 0; 
+}
+
