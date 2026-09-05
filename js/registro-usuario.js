@@ -31,7 +31,6 @@ function cargarRegiones() {
 
     if (regionEncontrada) {
       regionEncontrada.comunas.forEach(function (comuna) {
-        // CORREGIDO: "option" en vez de "opcion"
         const opcionComuna = document.createElement("option");
 
         opcionComuna.value = comuna;
@@ -80,7 +79,6 @@ document.addEventListener("DOMContentLoaded", function () {
     formulario.addEventListener("submit", function (evento) {
       evento.preventDefault();
 
-      // CORREGIDO: Búsqueda flexible de IDs para "rut" o "run"
       const nombre = document.getElementById("nombre")?.value.trim() || "";
       const apellidos =
         document.getElementById("apellidos")?.value.trim() || "";
