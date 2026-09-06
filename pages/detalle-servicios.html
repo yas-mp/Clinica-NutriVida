@@ -1,18 +1,18 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Clinica Nutricional - Contactános</title>
-    <link rel="stylesheet" href="../style.css" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinica Nutricional - Detalle</title>
+    <link rel="stylesheet" href="../style.css">
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
       crossorigin="anonymous"
     />
-  </head>
-  <body>
+</head>
+<body class="detalle-servicio">
     <header>
       <nav class="navbar navbar-expand-lg navCustom" data-bs-theme="dark">
         <div class="container-fluid">
@@ -59,71 +59,35 @@
                   <a class="nav-link active" href="blog.html">Blog</a>
                 </li>
               </ul>
-              <a class="btn btn-success btn-sm ms-2" href="inicio-sesion.html" style="border-radius: 15px;">Mi portal</a>
+              <li class="InicioSesion">
+                <a class="nav-link active" href="inicio-sesion.html">Iniciar sesion</a>
+              </li>
             </div>
         </div>
       </nav>
     </header>
-    <main>
-      <div class="card mx-auto" style="max-width: 450px; margin-top: 20px">
-        <div class="card-body">
-          <form class="row g-3" onsubmit="formulario(event)" novalidate>
-            <div class="col-12">
-              <label for="nombre" class="form-label">Nombre completo</label>
-              <input
-                type="text"
-                class="form-control"
-                id="nombre"
-                placeholder="Pedro Juan Peréz Gonzalés"
-                maxlength="100"
-              />
-            </div>
+    
+    <h1>Detalle del Servicio</h1>
 
-            <div class="col-12">
-              <label for="correo" class="form-label">Correo electrónico</label>
-              <input
-                type="email"
-                class="form-control"
-                id="correo"
-                placeholder="example@gmail.com"
-                maxlength="100"
-              />
-            </div>
+    <img id="imagen" width="300">
+    <h2 id="nombre"></h2>
+    <p id="descripcion"></p>
+    <p id="tipo"></p>
+    <p id="duracion"></p>
+    <p id="modalidad"></p>
+    <p id="profesional"></p>
+    <p id="precio"></p>
 
-            <div class="col-12">
-              <label for="comentarios" class="form-label">Comentarios</label>
-              <textarea
-                class="form-control"
-                placeholder="Máximo 500 carácteres..."
-                id="comentarios"
-                style="height: 100px"
-                maxlength="500"
-              ></textarea>
-            </div>
+    <script src="../js/detalle-servicios.js"></script>
 
-            <div class="col-12">
-              <button
-                type="submit" onclick="formulario(event)"
-                class="btn btn-success d-block mx-auto"
-                style="background-color: rgb(49, 78, 34)"
-              >
-                Enviar
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </main>
     <footer>
       <p class="p">Clinica nutricional - NutriVida</p>
     </footer>
-
-    <script src="../js/contactanos.js"></script>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
       crossorigin="anonymous"
     ></script>
-  </body>
+</body>
 </html>
