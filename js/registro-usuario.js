@@ -42,12 +42,12 @@ function cargarRegiones() {
   });
 }
 
-function EsRunValido(run) {
-  run = run.toUpperCase().replace(/\./g, "").replace(/-/g, "").trim();
-  if (run.length < 8) return false;
+function EsRunValido(rut) {
+  rut = rut.toUpperCase().replace(/\./g, "").replace(/-/g, "").trim();
+  if (rut.length < 8) return false;
 
-  const cuerpo = run.slice(0, -1);
-  const dvIngresado = run.slice(-1);
+  const cuerpo = rut.slice(0, -1);
+  const dvIngresado = rut.slice(-1);
 
   let suma = 0;
   let multiplicador = 2;
@@ -70,7 +70,7 @@ function EsRunValido(run) {
 document.addEventListener("DOMContentLoaded", function () {
   cargarRegiones();
 
-  // Buscar formulario por ID o por etiqueta si no tiene ID
+ 
   const formulario =
     document.getElementById("formulario-registro") ||
     document.querySelector("form");
@@ -79,12 +79,12 @@ document.addEventListener("DOMContentLoaded", function () {
     formulario.addEventListener("submit", function (evento) {
       evento.preventDefault();
 
-      const nombre = document.getElementById("nombre")?.value.trim() || "";
+      const nombres = document.getElementById("nombres")?.value.trim() || "";
       const apellidos =
         document.getElementById("apellidos")?.value.trim() || "";
-      const run =
+      const rut =
         (
-          document.getElementById("run") || document.getElementById("rut")
+          document.getElementById("rut") || document.getElementById("rut")
         )?.value.trim() || "";
       const correo = document.getElementById("correo")?.value.trim() || "";
       const clave = document.getElementById("clave")?.value || "";
@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("direccion")?.value.trim() || "";
       const rol = document.getElementById("rol")?.value || "Cliente";
 
-      if (!EsRunValido(run)) {
+      if (!EsRunValido(rut)) {
         alert("El RUN ingresado no es válido.");
         return;
       }
@@ -115,10 +115,12 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       const nuevoUsuario = {
-        nombre,
+        nombre: nombres, 
+        nombres,
         apellidos,
-        run,
+        rut,
         correo,
+        clave,         
         region,
         comuna,
         direccion,
@@ -130,7 +132,7 @@ document.addEventListener("DOMContentLoaded", function () {
       localStorage.setItem("usuarios", JSON.stringify(listaUsuarios));
 
       alert("¡Usuario registrado con éxito!");
-      window.location.href = "iniciar-sesion.html";
+      window.location.href = "../pages/inicio-sesion.html";
     });
   }
 });
