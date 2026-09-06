@@ -268,7 +268,7 @@ footer {
 }
 
 .servicios .btn-detalle:hover {
-  background-color: #0f766e;
+  background-color: #046b17;
 }
 
 .detalle-servicio {
@@ -290,10 +290,10 @@ footer {
   position: relative;
 }
 
-
 .detalle-servicio #imagen,
 .detalle-servicio #nombre,
 .detalle-servicio #descripcion,
+.detalle-servicio #codigo,
 .detalle-servicio #tipo,
 .detalle-servicio #duracion,
 .detalle-servicio #modalidad,
@@ -337,6 +337,7 @@ footer {
   border-left: 4px solid #4caf50;
 }
 
+.detalle-servicio p#codigo,
 .detalle-servicio p#tipo,
 .detalle-servicio p#duracion,
 .detalle-servicio p#modalidad,

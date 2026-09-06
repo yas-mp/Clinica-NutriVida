@@ -4,6 +4,7 @@ let servicio = JSON.parse(localStorage.getItem("servicio"));
 document.getElementById("imagen").src = servicio.imagen;
 document.getElementById("nombre").textContent = servicio.nombre;
 document.getElementById("descripcion").textContent = servicio.descripcion;
+document.getElementById("codigo").textContent = "Código: " + servicio.codigo;
 document.getElementById("tipo").textContent = "Tipo: " + servicio.tipo;
 document.getElementById("duracion").textContent = "Duración: " + servicio.duracion;
 document.getElementById("modalidad").textContent = "Modalidad: " + servicio.modalidad;
