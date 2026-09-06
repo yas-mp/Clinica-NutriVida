@@ -229,7 +229,7 @@ for (let i = 0; i < servicios.length; i++) {
 
             <p>Precio: $${servicios[i].precio}</p>
 
-            <button onclick="verDetalle(${servicios[i].id})">
+            <button class="btn-detalle" onclick="verDetalle(${servicios[i].id})">
 
                 Más información
             </button>
