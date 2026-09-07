@@ -430,3 +430,11 @@ footer {
     font-size: 1.05rem;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
 }
+
+.titulo-registro{
+  text-align: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  border-bottom: 3px solid #2a492a;
+  margin-top: auto;
+
+}
