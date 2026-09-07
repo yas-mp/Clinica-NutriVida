@@ -2,7 +2,29 @@ document.addEventListener("DOMContentLoaded", function () {
   mostrarServiciosPanel();
   mostrarUsuariosPanel();
   mostrarReservasPanel();
+  cargarDatosAdmin();
 });
+
+function cargarDatosAdmin() {
+  const usuarioActivo = JSON.parse(localStorage.getItem("usuario_sesion"));
+
+  if (!usuarioActivo) {
+    alert("Debes iniciar sesión para acceder al panel de administración.");
+    window.location.href = "../pages/inicio-sesion.html";
+    return;
+  }
+  const esAdmin =
+    usuarioActivo.rol === "Administrador" || usuarioActivo.rol === "admin";
+  if (!esAdmin) {
+    alert("No tienes permisos de administrador para acceder a esta vista.");
+    window.location.href = "../pages/inicio-sesion.html";
+    return;
+  }
+  const titulo = document.getElementById("titulo-bienvenida-admin");
+  if (titulo) {
+    titulo.textContent = `Panel de Administración - Bienvenido(a), ${usuarioActivo.nombre || usuarioActivo.nombres || "Admin"}`;
+  }
+}
 
 function mostrarReservasPanel() {
   let tablaReservas = document.getElementById("tabla-reservas");
@@ -63,13 +85,24 @@ function mostrarUsuariosPanel() {
     let nombreCompleto =
       `${user.nombre || user.nombres || ""} ${user.apellidos || ""}`.trim();
 
+    let rolActual = user.rol || "Cliente";
+    let opcion1 = rolActual === "Cliente" || rolActual === "Paciente" ? "selected" : "";
+    let opcion2 = rolActual === "Nutricionista" ? "selected" : "";
+    let opcion3 = rolActual === "Administrador" || rolActual === "admin" ? "selected" : "";
+
     tablaUsuarios.innerHTML += `
-            <tr>
-                <td><strong>${user.rut || user.run || "N/A"}</strong></td>
+          <tr>
+            <td><strong>${user.rut || user.run || "N/A"}</strong></td>
                 <td>${nombreCompleto || "Sin nombre"}</td>
                 <td>${user.correo || "N/A"}</td>
                 <td>${user.direccion || "N/A"}, ${user.comuna || ""}</td>
-                <td><span class="badge bg-secondary">${user.rol || "Paciente"}</span></td>
+                <td>
+                  <select class="form-select form-select-sm border-success fw-bold" onchange="cambiarRolUsuario(${i}, this.value)">
+                    <option value="Cliente" ${opcion1}>Paciente</option>
+                    <option value="Nutricionista" ${opcion2}>Nutricionista</option>
+                    <option value="Administrador" ${opcion3}>Administrador</option>
+                  </select>
+                </td>
                 <td>
                     <button class="btn btn-danger btn-sm" onclick="eliminarUsuario(${i})">
                         Eliminar
@@ -80,6 +113,24 @@ function mostrarUsuariosPanel() {
                 </td>
             </tr>
         `;
+  }
+}
+
+function cambiarRolUsuario(pos, nRol) {
+  let listaUsuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+  if (listaUsuarios[pos]) {
+    listaUsuarios[pos].rol = nRol;
+    localStorage.setItem("usuarios", JSON.stringify(listaUsuarios));
+
+    let usuarioSesion = JSON.parse(localStorage.getItem("usuario_sesion"));
+    if (usuarioSesion && usuarioSesion.correo === listaUsuarios[pos].correo) {
+      usuarioSesion.rol = nRol;
+      localStorage.setItem("usuario_sesion", JSON.stringify(usuarioSesion));
+    }
+
+    alert("Rol cambiado a " + nRol + " exitosamente.");
+    mostrarUsuariosPanel();
   }
 }
 
@@ -161,7 +212,6 @@ function eliminarServicio(id) {
     mostrarServiciosPanel();
   }
 }
-
 
 function cerrarSesion() {
   localStorage.removeItem("usuario_sesion");

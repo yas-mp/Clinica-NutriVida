@@ -44,7 +44,17 @@ function ingresar() {
         return;
     }
 
-    var usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+    if (typeof listadoProfesionales !== "undefined") {
+        for (var i = 0; i < listadoProfesionales.length; i++) {
+            if (listadoProfesionales[i].correo === correo && listadoProfesionales[i].clave === clave) {
+                localStorage.setItem("usuario_sesion", JSON.stringify(listadoProfesionales[i]));
+                window.location.href = "nutricionista.html";
+                return;
+            }
+        }
+    }
+
+    var usuarios = JSON.parse(localStorage.getItem("usuarios")) || JSON.parse(localStorage.getItem("usuariosRegistrados")) || [];
     var encontrado = null;
 
     for (var i = 0; i < usuarios.length; i++) {
@@ -54,9 +64,15 @@ function ingresar() {
         }
     }
 
-    if (encontrado != null) {
+  if (encontrado !== null) {
         localStorage.setItem("usuario_sesion", JSON.stringify(encontrado));
-        window.location.href = "usuario.html";
+        if (encontrado.rol === "Nutricionista") {
+            window.location.href = "nutricionista.html";
+        } else if (encontrado.rol === "Administrador" || encontrado.rol === "admin") {
+            window.location.href = "admin.html";
+        } else {
+            window.location.href = "usuario.html";
+        }
     } else {
         alert("Correo o clave incorrectos");
     }

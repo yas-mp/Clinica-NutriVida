@@ -8,7 +8,7 @@ function cargarDatosUsuario() {
 
   if (!usuarioActivo) {
     alert("Debes iniciar sesión para acceder al portal.");
-    window.location.href = "iniciar-sesion.html";
+    window.location.href = "../pages/inicio-sesion.html";
     return;
   }
   const titulo = document.getElementById("titulo-bienvenida");
