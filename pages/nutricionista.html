@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clinica NutriVida - Panel Nutricionista</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navCustom" data-bs-theme="dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="../index.html">NutriVida</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavAltMarkup"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <ul class="navbar-nav mx-auto"></ul>
+            <div class="d-flex align-items-center">
+              <button
+                type="button"
+                class="btn btn-success btn-sm"
+                onclick="cerrarSesion()"
+                style="
+                  border-radius: 15px;
+                  background-color: rgb(114, 21, 21);
+                  border: none;
+                "
+              >
+                Cerrar sesión
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section class="section-usuario">
+        <div>
+          <div class="p-4">
+            <h2
+              class="text-center fw-bold mb-4"
+              style="
+                color: #2a492a;
+                border-bottom: 3px solid #2a492a;
+                padding-bottom: 10px;
+              "
+              id="titulo-bienvenida-nutri"
+            >
+              Panel del Nutricionista
+            </h2>
+
+            <div
+              class="mb-4 p-3 rounded"
+              style="background-color: #f8f9fa; border-left: 5px solid #2a492a"
+            >
+              <h4 class="fw-bold mb-3" style="color: #2a492a">
+                Mis Datos Profesionales
+              </h4>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label fw-bold">Nombre Profesional:</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="perfil-nombre"
+                    readonly
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label fw-bold">RUN:</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="perfil-run"
+                    readonly
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label fw-bold">Correo Electrónico:</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="perfil-correo"
+                    readonly
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label fw-bold">Especialidad / Rol:</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="perfil-rol"
+                    readonly
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h4 class="m-0 fw-bold" style="color: #2a492a">
+                Agenda de Pacientes Agendados
+              </h4>
+            </div>
+
+            <div class="table-responsive mb-5">
+              <table class="table table-hover align-middle">
+                <thead class="text-white" style="background-color: #2a492a">
+                  <tr>
+                    <th>RUT Paciente</th>
+                    <th>Servicio</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Estado</th>
+                    <th class="text-center">Acción</th>
+                  </tr>
+                </thead>
+                <tbody id="tabla-citas-nutri"></tbody>
+              </table>
+            </div>
+
+            <h4 class="fw-bold mb-3" style="color: #2a492a">
+              Lista de Pacientes Registrados
+            </h4>
+            <div class="table-responsive">
+              <table class="table table-hover align-middle">
+                <thead class="text-white" style="background-color: #2a492a">
+                  <tr>
+                    <th>RUT</th>
+                    <th>Nombre Paciente</th>
+                    <th>Correo</th>
+                    <th>Ubicación</th>
+                  </tr>
+                </thead>
+                <tbody id="tabla-pacientes-nutri"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p class="m-0">Clínica Nutricional - NutriVida &copy; 2026</p>
+    </footer>
+
+    <script src="../js/vista-nutricionista.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
