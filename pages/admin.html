@@ -1,9 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Clinica NutriVida - Panel Administrativo</title>
+    <link rel="stylesheet" href="../style.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -11,210 +12,182 @@
       crossorigin="anonymous"
     />
   </head>
+  <body class="bg-light bg-admin">
     <header>
-      <!doctype html>
-      <html lang="es">
-        <head>
-          <meta charset="UTF-8" />
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0"
-          />
-          <title>NutriVida - Panel Administrativo</title>
-          <link rel="stylesheet" href="../style.css" />
-          <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-          />
-        </head>
-        <body class="bg-light bg-admin">
-          <!-- NAVBAR DE ADMINISTRADOR -->
-          <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container-fluid">
-              <a class="navbar-brand fw-bold" href="#"
-                >NutriVida | Panel Administrativo</a
-              >
-              <div class="d-flex align-items-center">
-                <span class="text-white me-3 d-none d-md-inline"
-                  >Sesión: Admin</span
-                >
-                <a
-                  href="../index.html"
-                  class="btn btn-outline-light btn-sm me-2"
-                  >Ir al Sitio</a
-                >
-                <button
-                  id="btn-cerrar-sesion"
-                  class="btn btn-danger btn-sm"
-                  onclick="cerrarSesion()"
-                >
-                  Cerrar Sesión
-                </button>
-              </div>
-            </div>
-          </nav>
-
-          <div class="container my-4">
-            <h2 class="mb-3">Vista administrativa</h2>
-
-            <ul class="nav nav-tabs mb-4" id="adminTabs" role="tablist">
-              <li class="nav-item">
-                <button
-                  class="nav-link active fw-bold"
-                  id="tab-usuarios"
-                  data-bs-toggle="tab"
-                  data-bs-target="#sec-usuarios"
-                >
-                  Usuarios Registrados
-                </button>
-              </li>
-              <li class="nav-item">
-                <button
-                  class="nav-link fw-bold"
-                  id="tab-servicios"
-                  data-bs-toggle="tab"
-                  data-bs-target="#sec-servicios"
-                >
-                  Catálogo de Servicios
-                </button>
-              </li>
-            </ul>
-
-            <div class="tab-content">
-              <div class="tab-pane fade show active" id="sec-usuarios">
-                <div class="card p-3 shadow-sm">
-                  <div
-                    class="d-flex justify-content-between align-items-center mb-3"
-                  >
-                    <h4 class="m-0">Gestión de Usuarios</h4>
-                  </div>
-                  <div class="table-responsive">
-                    <table class="table table-hover align-middle">
-                      <thead class="table-dark">
-                        <tr>
-                          <th>RUN</th>
-                          <th>Nombre Completo</th>
-                          <th>Correo</th>
-                          <th>Ubicación</th>
-                          <th>Rol</th>
-                          <th>Acción</th>
-                        </tr>
-                      </thead>
-                      <tbody id="tabla-usuarios">
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-
-              <!-- TABLA 2: MANTENEDOR DE SERVICIOS -->
-              <div class="tab-pane fade" id="sec-servicios">
-                <div class="card p-3 shadow-sm">
-                  <div
-                    class="d-flex justify-content-between align-items-center mb-3"
-                  >
-                    <h4 class="m-0">Servicios y Planes</h4>
-                    <button
-                      class="btn btn-success btn-sm"
-                      data-bs-toggle="modal"
-                      data-bs-target="#modalNuevoServicio"
-                    >
-                      + Agregar Servicio
-                    </button>
-                  </div>
-                  <div class="table-responsive">
-                    <table class="table table-hover align-middle">
-                      <thead class="table-dark">
-                        <tr>
-                          <th>Código</th>
-                          <th>Nombre del Servicio</th>
-                          <th>Profesional A Cargo</th>
-                          <th>Precio</th>
-                          <th>Acción</th>
-                        </tr>
-                      </thead>
-                      <tbody id="tabla-servicios">
-                        <!-- Se llena automáticamente con JS desde LocalStorage -->
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-success" style="box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);;">
+        <div class="container-fluid">
+          <a class="navbar-brand fw-bold" href="admin.html"
+            >NutriVida | Panel Administrativo</a
+          >
+          <div class="d-flex align-items-center">
+            <span class="text-white me-3 d-none d-md-inline"
+              >Sesión: Admin</span
+            >
+            <a href="../index.html" class="btn btn-outline-light btn-sm me-2"
+              >Ir al Sitio</a
+            >
+            <button
+              id="btn-cerrar-sesion"
+              class="btn btn-danger btn-sm"
+              onclick="cerrarSesion()"
+            >
+              Cerrar Sesión
+            </button>
           </div>
-
-          <!-- MODAL: AGREGAR NUEVO SERVICIO -->
-          <div class="modal fade" id="modalNuevoServicio" tabindex="-1">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header bg-dark text-white">
-                  <h5 class="modal-title">Crear Nuevo Servicio</h5>
-                  <button
-                    type="button"
-                    class="btn-close btn-close-white"
-                    data-bs-dismiss="modal"
-                  ></button>
-                </div>
-                <div class="modal-body">
-                  <form id="form-nuevo-servicio">
-                    <div class="mb-2">
-                      <label class="form-label">Código</label>
-                      <input
-                        type="text"
-                        id="serv-codigo"
-                        class="form-control"
-                        placeholder="Ej: CN002"
-                        required
-                      />
-                    </div>
-                    <div class="mb-2">
-                      <label class="form-label">Nombre del Servicio</label>
-                      <input
-                        type="text"
-                        id="serv-nombre"
-                        class="form-control"
-                        required
-                      />
-                    </div>
-                    <div class="mb-2">
-                      <label class="form-label">Profesional</label>
-                      <input
-                        type="text"
-                        id="serv-profesional"
-                        class="form-control"
-                        placeholder="Ej: Nut. Carolina Fuentes"
-                        required
-                      />
-                    </div>
-                    <div class="mb-3">
-                      <label class="form-label">Precio ($)</label>
-                      <input
-                        type="number"
-                        id="serv-precio"
-                        class="form-control"
-                        required
-                      />
-                    </div>
-                    <button type="submit" class="btn btn-primary w-100">
-                      Guardar Servicio
-                    </button>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <script src="../js/admin.js"></script>
-          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-        
-      </html>
+        </div>
+      </nav>
     </header>
-    <main></main>
+
+    <main class="container my-4">
+      <h2 class="mb-3">Vista administrativa</h2>
+
+      <ul class="nav nav-tabs mb-4" id="adminTabs" role="tablist">
+        <li class="nav-item">
+          <button
+            class="nav-link active fw-bold text-success"
+            id="tab-usuarios"
+            data-bs-toggle="tab"
+            data-bs-target="#sec-usuarios"
+          >
+            Usuarios Registrados
+          </button>
+        </li>
+        <li class="nav-item">
+          <button
+            class="nav-link fw-bold text-success"
+            id="tab-servicios"
+            data-bs-toggle="tab"
+            data-bs-target="#sec-servicios"
+          >
+            Catálogo de Servicios
+          </button>
+        </li>
+      </ul>
+
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="sec-usuarios">
+          <div class="card p-3 shadow-sm">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h4 class="m-0">Gestión de Usuarios</h4>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-hover align-middle">
+                <thead class="table-dark">
+                  <tr>
+                    <th>RUN</th>
+                    <th>Nombre Completo</th>
+                    <th>Correo</th>
+                    <th>Dirección</th>
+                    <th>Rol</th>
+                    <th>Acción</th>
+                  </tr>
+                </thead>
+                <tbody id="tabla-usuarios"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-pane fade" id="sec-servicios">
+          <div class="card p-3 shadow-sm">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h4 class="m-0">Servicios y Planes</h4>
+              <button
+                class="btn btn-success btn-sm"
+                data-bs-toggle="modal"
+                data-bs-target="#modalNuevoServicio"
+              >
+                + Agregar Servicio
+              </button>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-hover align-middle">
+                <thead class="table-dark">
+                  <tr>
+                    <th>Código</th>
+                    <th>Nombre del Servicio</th>
+                    <th>Profesional A Cargo</th>
+                    <th>Precio</th>
+                    <th>Acción</th>
+                  </tr>
+                </thead>
+                <tbody id="tabla-servicios"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div class="modal fade" id="modalNuevoServicio" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header bg-dark text-white">
+            <h5 class="modal-title">Crear Nuevo Servicio</h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="form-nuevo-servicio">
+              <div class="mb-2">
+                <label class="form-label">Código</label>
+                <input
+                  type="text"
+                  id="serv-codigo"
+                  class="form-control"
+                  placeholder="Ej: CN002"
+                  required
+                />
+              </div>
+              <div class="mb-2">
+                <label class="form-label">Nombre del Servicio</label>
+                <input
+                  type="text"
+                  id="serv-nombre"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="mb-2">
+                <label class="form-label">Profesional</label>
+                <input
+                  type="text"
+                  id="serv-profesional"
+                  class="form-control"
+                  placeholder="Ej: Nut. Carolina Fuentes"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Precio ($)</label>
+                <input
+                  type="number"
+                  id="serv-precio"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <button type="submit" class="btn btn-success w-100">
+                Guardar Servicio
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="listaServicios" style="display: none"></div>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
       crossorigin="anonymous"
     ></script>
+
+    <script src="../js/vista-admin.js"></script>
+    <script src="../js/servicios.js"></script>
   </body>
 </html>
