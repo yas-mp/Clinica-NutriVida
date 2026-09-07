@@ -62,6 +62,16 @@
             Catálogo de Servicios
           </button>
         </li>
+        <li class="nav-item">
+          <button
+            class="nav-link fw-bold text-success"
+            id="tab-reservas"
+            data-bs-toggle="tab"
+            data-bs-target="#sec-reservas"
+          >
+            Reservas
+          </button>
+        </li>
       </ul>
 
       <div class="tab-content">
@@ -83,6 +93,29 @@
                   </tr>
                 </thead>
                 <tbody id="tabla-usuarios"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-pane fade" id="sec-reservas">
+          <div class="card p-3 shadow-sm">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h4 class="m-0">Gestión de Reservas</h4>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-hover align-middle">
+                <thead class="table-dark">
+                  <tr>
+                    <th>RUN</th>
+                    <th>Servicio</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Estado</th>
+                    <th>Acción</th>
+                  </tr>
+                </thead>
+                <tbody id="tabla-reservas"></tbody>
               </table>
             </div>
           </div>
@@ -114,6 +147,7 @@
                 <tbody id="tabla-servicios"></tbody>
               </table>
             </div>
+            
           </div>
         </div>
       </div>
@@ -178,7 +212,9 @@
         </div>
       </div>
     </div>
-
+     <footer>
+      <p class="m-0">Clínica Nutricional - NutriVida &copy; 2026</p>
+    </footer>
     <div id="listaServicios" style="display: none"></div>
 
     <script

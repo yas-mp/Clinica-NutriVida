@@ -1,7 +1,49 @@
 document.addEventListener("DOMContentLoaded", function () {
   mostrarServiciosPanel();
   mostrarUsuariosPanel();
+  mostrarReservasPanel();
 });
+
+function mostrarReservasPanel() {
+  let tablaReservas = document.getElementById("tabla-reservas");
+  if (!tablaReservas) return;
+
+  tablaReservas.innerHTML = "";
+
+  let listaReservas = JSON.parse(localStorage.getItem("reservas")) || [];
+  if (listaReservas.length === 0) {
+    tablaReservas.innerHTML = `<tr><td colspan="6" class="text-center py-3">No hay horas reservadas.</td></tr>`;
+    return;
+  }
+
+  for (let i = 0; i < listaReservas.length; i++) {
+    let reserva = listaReservas[i];
+
+    tablaReservas.innerHTML += `
+            <tr>
+                <td><strong>${reserva.rut}</strong></td>
+                <td>${reserva.servicio}</td>
+                <td>${reserva.fecha}</td>
+                <td>${reserva.hora} hrs</td>
+                <td><span class="badge bg-success">${reserva.estado}</span></td>
+                <td>
+                <button class="btn btn-danger btn-sm" onclick="cancelarReserva(${i})">
+                    Cancelar
+                </button>
+                </td>
+            </tr>
+        `;
+  }
+}
+
+function cancelarReserva(index) {
+  if (confirm("¿Estás seguro de cancelar esta reserva?")) {
+    let listaReservas = JSON.parse(localStorage.getItem("reservas")) || [];
+    listaReservas.splice(index, 1);
+    localStorage.setItem("reservas", JSON.stringify(listaReservas));
+    mostrarReservasPanel();
+  }
+}
 
 function mostrarUsuariosPanel() {
   let tablaUsuarios = document.getElementById("tabla-usuarios");
@@ -41,25 +83,28 @@ function mostrarUsuariosPanel() {
   }
 }
 
-function eliminarUsuario(index){
-    if(confirm("¿Estás seguro de que deseas eliminar a este usuario?")){
-        let listaUsuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-        listaUsuarios.splice(index,1);
-        localStorage.setItem("usuarios", JSON.stringify(listaUsuarios));
-        mostrarUsuariosPanel();
-    }
+function eliminarUsuario(index) {
+  if (confirm("¿Estás seguro de que deseas eliminar a este usuario?")) {
+    let listaUsuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+    listaUsuarios.splice(index, 1);
+    localStorage.setItem("usuarios", JSON.stringify(listaUsuarios));
+    mostrarUsuariosPanel();
+  }
 }
 
-function modificarUsuario(index){
-    let listaUsuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-    let user = listaUsuarios[index];
+function modificarUsuario(index) {
+  let listaUsuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+  let user = listaUsuarios[index];
 
-    let nuevoCorreo = prompt("Ingrese el nuevo correo electronico:", user.correo || "");
-    if(nuevoCorreo !== null && nuevoCorreo.trim() !== ""){
-        user.correo = nuevoCorreo.trim();
-        localStorage.setItem("usuarios", JSON.stringify(listaUsuarios));
-        mostrarUsuariosPanel();
-    }
+  let nuevoCorreo = prompt(
+    "Ingrese el nuevo correo electronico:",
+    user.correo || "",
+  );
+  if (nuevoCorreo !== null && nuevoCorreo.trim() !== "") {
+    user.correo = nuevoCorreo.trim();
+    localStorage.setItem("usuarios", JSON.stringify(listaUsuarios));
+    mostrarUsuariosPanel();
+  }
 }
 
 function mostrarServiciosPanel() {
@@ -117,8 +162,9 @@ function eliminarServicio(id) {
   }
 }
 
-function cerrarSesion(){
-    localStorage.removeItem("usuario_sesion");
-    alert("Has cerrado sesión correctamente.");
-    window.location.href="../index.html";
+
+function cerrarSesion() {
+  localStorage.removeItem("usuario_sesion");
+  alert("Has cerrado sesión correctamente.");
+  window.location.href = "../index.html";
 }

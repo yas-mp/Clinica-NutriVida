@@ -12,43 +12,43 @@
     />
     <link rel="stylesheet" href="../style.css" />
   </head>
-  <header>
-    <nav class="navbar navbar-expand-lg navCustom" data-bs-theme="dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="../index.html">NutriVida</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNavAltMarkup"
-          aria-controls="navbarNavAltMarkup"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navCustom" data-bs-theme="dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="../index.html">NutriVida</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <ul class="navbar-nav mx-auto"></ul>
-          <div class="d-flex align-items-center">
-            <button
-              type="button"
-              class="btn btn-success btn-sm"
-              onclick="cerrarSesion()"
-              style="
-                border-radius: 15px;
-                background-color: rgb(114, 21, 21);
-                border: none;
-              "
-            >
-              Cerrar sesión
-            </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <ul class="navbar-nav mx-auto"></ul>
+            <div class="d-flex align-items-center">
+              <button
+                type="button"
+                class="btn btn-success btn-sm"
+                onclick="cerrarSesion()"
+                style="
+                  border-radius: 15px;
+                  background-color: rgb(114, 21, 21);
+                  border: none;
+                "
+              >
+                Cerrar sesión
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    </nav>
-  </header>
-  <body>
+      </nav>
+    </header>
     <main>
       <section class="section-usuario">
         <div>
@@ -116,7 +116,7 @@
                 Mis Citas Medicas
               </h4>
               <a
-                href="servicios.html"
+                href="reservas-horas.html"
                 class="btn btn-sm text-white"
                 style="background-color: #2a492a"
               >
@@ -135,14 +135,16 @@
                     <th class="text-center">Acción</th>
                   </tr>
                 </thead>
-                <tbody>
-                </tbody>
+                <tbody></tbody>
               </table>
             </div>
           </div>
         </div>
       </section>
     </main>
+    <footer>
+      <p class="m-0">Clínica Nutricional - NutriVida &copy; 2026</p>
+    </footer>
     <script src="../js/vista-usuario.js"></script>
 
     <script
