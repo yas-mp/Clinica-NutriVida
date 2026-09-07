@@ -24,14 +24,18 @@ function cargarDatosNutri() {
 
   const nombreComp =
     `${usuarioActivo.nombre || usuarioActivo.nombres || ""} ${usuarioActivo.apellidos || ""}`.trim();
-  
-  document.getElementById("perfil-nombre").value = nombreComp || "Nutricionista";
-  document.getElementById("perfil-run").value = usuarioActivo.rut || usuarioActivo.run || "N/A";
-  document.getElementById("perfil-correo").value = usuarioActivo.correo || "N/A";
+
+  document.getElementById("perfil-nombre").value =
+    nombreComp || "Nutricionista";
+  document.getElementById("perfil-run").value =
+    usuarioActivo.rut || usuarioActivo.run || "No informado";
+  document.getElementById("perfil-correo").value =
+    usuarioActivo.correo || "No informado";
 
   const inputRol = document.getElementById("perfil-rol");
   if (inputRol) {
-    inputRol.value = usuarioActivo.especialidad || usuarioActivo.rol || "Nutricionista";
+    inputRol.value =
+      usuarioActivo.especialidad || usuarioActivo.rol || "Nutricionista";
   }
 
   const titulo = document.getElementById("titulo-bienvenida-nutri");
@@ -49,8 +53,8 @@ function mostrarCitasNutricionista() {
   const usuarioActivo = JSON.parse(localStorage.getItem("usuario_sesion"));
   const listaReservas = JSON.parse(localStorage.getItem("reservas")) || [];
 
-  const citas = listaReservas.filter((res) =>
-    !res.profesional || res.profesional.includes(usuarioActivo.nombre)
+  const citas = listaReservas.filter(
+    (res) => !res.profesional || res.profesional.includes(usuarioActivo.nombre),
   );
 
   if (citas.length === 0) {
@@ -60,7 +64,9 @@ function mostrarCitasNutricionista() {
 
   citas.forEach((res) => {
     const indexReal = listaReservas.findIndex(
-      (r) => r.id === res.id || (r.rut === res.rut && r.fecha === res.fecha && r.hora === res.hora)
+      (r) =>
+        r.id === res.id ||
+        (r.rut === res.rut && r.fecha === res.fecha && r.hora === res.hora),
     );
 
     tablaCitas.innerHTML += `
@@ -69,11 +75,30 @@ function mostrarCitasNutricionista() {
         <td>${res.servicio || "Consulta Nutricional"}</td>
         <td>${res.fecha || "Sin fecha"}</td>
         <td>${res.hora || "00:00"} hrs</td>
-        <td><span class="badge ${res.estado === 'Atendido' ? 'bg-primary' : 'bg-success'}">${res.estado || "Confirmada"}</span></td>
+        <td>
+          <span class="badge ${
+            res.estado === "Atendido"
+              ? "bg-primary"
+              : res.estado === "cancelada"
+                ? "bg-danger"
+                : "bg-success"
+          }">
+            ${res.estado || "Confirmada"}
+          </span>
+        </td>
         <td class="text-center">
-          <button class="btn btn-sm btn-outline-success" onclick="completarAtencion(${indexReal})">
-            Atendido
-          </button>
+          ${
+            res.estado === "cancelada"
+              ? `<span class="badge bg-secondary">Sin acciones</span>`
+              : `
+                <button class="btn btn-sm btn-outline-success me-1" onclick="completarAtencion(${indexReal})">
+                  Atendido
+                </button>
+                <button class="btn btn-sm btn-outline-danger" onclick="cancelarAtencion(${indexReal})">
+                  Cancelar
+                </button>
+              `
+          }
         </td>
       </tr>
     `;
@@ -90,6 +115,17 @@ function completarAtencion(index) {
   }
 }
 
+function cancelarAtencion(index) {
+  let listaReservas = JSON.parse(localStorage.getItem("reservas")) || [];
+
+  if (index !== -1 && listaReservas[index]) {
+    listaReservas[index].estado = "cancelada";
+    localStorage.setItem("reservas", JSON.stringify(listaReservas));
+    mostrarCitasNutricionista();
+    alert("La cita ha sido cancelada.");
+  }
+}
+
 function mostrarPacientesNutricionista() {
   const tablaPacientes = document.getElementById("tabla-pacientes-nutri");
   if (!tablaPacientes) return;
@@ -101,7 +137,7 @@ function mostrarPacientesNutricionista() {
     [];
 
   const pacientes = listaUsuarios.filter(
-    (u) => !u.rol || u.rol === "Cliente" || u.rol === "Paciente"
+    (u) => !u.rol || u.rol === "Cliente" || u.rol === "Paciente",
   );
 
   if (pacientes.length === 0) {
