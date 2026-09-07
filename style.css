@@ -1,5 +1,5 @@
 .navCustom{
-    background-color: rgb(49, 78, 34);
+    background-color: rgb(76, 114, 58);
     min-height: 60px;
     box-shadow: 2px 2px 8px rgba(36, 19, 0, 0.2);
     position: relative;
@@ -209,12 +209,9 @@ footer {
 }
 
 .servicios #listaServicios {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 15px 40px 15px;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 24px;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  max-width: 100% !important;
 }
 
 .servicios .card-servicio {
