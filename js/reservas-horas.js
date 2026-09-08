@@ -47,7 +47,7 @@ function guardarReserva(r) {
         alert("El RUT ingresado no es válido, inténtalo de nuevo.");
         return;
     }
-
+    
     const seleccionarProfesional = document.getElementById("reserva-profesional").value;
 
     const nuevaReserva = {
